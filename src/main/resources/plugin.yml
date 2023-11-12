@@ -1,0 +1,4 @@
+name: Auctions
+version: '${version}'
+main: me.levitate.auctions.Auctions
+api-version: '1.20'
