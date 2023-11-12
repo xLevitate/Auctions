@@ -38,14 +38,17 @@ public class AuctionManager {
             return;
         }
 
-        if (economy.getBalance(player) <= item.getPrice()) {
+        if (economy.getBalance(player) < item.getPrice()) {
             config.sendMessage(player, "no-balance");
             return;
         }
 
         if (economy.withdrawPlayer(player, item.getPrice()).transactionSuccess()) {
-            player.getInventory().addItem(item.getItem());
             auctionItems.remove(item);
+            player.getInventory().addItem(item.getItem());
+            economy.depositPlayer(item.getSeller(), item.getPrice());
+
+            config.sendMessage(player, "item-purchased");
         }
     }
 }

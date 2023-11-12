@@ -31,7 +31,6 @@ public class MainCommand extends BaseCommand {
     @Syntax("<price>")
     public void onSell(CommandSender sender, int price) {
         final Player player = (Player) sender;
-
         if (price <= 0) {
             config.sendMessage(player, "price-low");
             return;
@@ -43,7 +42,8 @@ public class MainCommand extends BaseCommand {
             return;
         }
 
-        final AuctionItem auctionItem = new AuctionItem(item, player, price);
+        final AuctionItem auctionItem = new AuctionItem(item, config.modifyItem(item, player.getName(), price), player, price);
+        player.getInventory().removeItem(item);
 
         auctionManager.addItem(auctionItem);
         config.sendMessage(player, "item-listed");

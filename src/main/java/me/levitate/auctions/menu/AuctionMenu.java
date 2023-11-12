@@ -33,10 +33,11 @@ public class AuctionMenu extends PaginatedGui {
 
         // TODO: Make a foreach that loops through all the auction items and adds them here.
         auctionManager.auctionItems.forEach((item) -> {
-            GuiItem guiItem = ItemBuilder.from(item.getItem()).asGuiItem(e -> {
+            GuiItem guiItem = ItemBuilder.from(item.getModifiedItem()).asGuiItem(e -> {
                 Player target = (Player) e.getWhoClicked();
 
                 auctionManager.purchaseItem(target, item);
+                target.closeInventory();
             });
 
             addItem(guiItem);

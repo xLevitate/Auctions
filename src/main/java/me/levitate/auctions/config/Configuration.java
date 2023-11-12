@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,9 @@ public class Configuration {
     public String backName = "";
     public List<String> backLore;
 
+    // Auction Item
+    public List<String> itemLore;
+
     public Configuration(Plugin plugin, FileConfiguration fileConfiguration) {
         this.plugin = plugin;
         this.fileConfiguration = fileConfiguration;
@@ -62,7 +67,7 @@ public class Configuration {
         plugin.saveConfig();
 
         loadMessages();
-        //loadSettings();
+        loadSettings();
     }
 
     public void loadMessages() {
@@ -74,7 +79,7 @@ public class Configuration {
     }
 
     public void loadSettings() {
-        ConfigurationSection mainMenu = fileConfiguration.getConfigurationSection("main-menu");
+        /*ConfigurationSection mainMenu = fileConfiguration.getConfigurationSection("main-menu");
         if (mainMenu == null) {
             Bukkit.getLogger().severe("Couldn't find main-menu section in the config.");
             return;
@@ -93,7 +98,9 @@ public class Configuration {
         backItem = Material.matchMaterial(mainMenu.getString("back-material"));
         backName = mainMenu.getString("back-name");
         backLore = mainMenu.getStringList("back-lore");
-        backItemStack = createMenuItem(backItem, backName, backLore);
+        backItemStack = createMenuItem(backItem, backName, backLore);*/
+
+        itemLore = fileConfiguration.getStringList("auctionitem.lore");
     }
 
     /**
@@ -127,5 +134,23 @@ public class Configuration {
         item.setItemMeta(itemMeta);
 
         return item;
+    }
+
+    public ItemStack modifyItem(ItemStack originalItem, String playerName, int price) {
+        ItemMeta itemMeta = originalItem.getItemMeta();
+
+        List<Component> lore = itemMeta.hasLore() ? new ArrayList<>(itemMeta.lore()) : new ArrayList<>();
+        lore.addAll(itemLore.stream()
+                .map(line -> {
+                    line = line.replace("%seller%", playerName);
+                    line = line.replace("%price%", String.valueOf(price));
+                    return MiniMessage.miniMessage().deserialize(line).decoration(TextDecoration.ITALIC, false);
+                })
+                .toList());
+
+        itemMeta.lore(lore);
+        originalItem.setItemMeta(itemMeta);
+
+        return originalItem;
     }
 }

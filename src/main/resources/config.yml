@@ -5,3 +5,13 @@ messages:
   inventory-full: "<red>Your inventory is full."
   no-item: "<red>You are not holding an item."
   item-listed: "<green>Your item has been listed!"
+  item-purchased: "<green>You have purchased an item!"
+
+auctionitem:
+  lore:
+    - "<dark_gray>auction item"
+    - ""
+    - "<gray>price: %price%"
+    - "<gray>seller: %seller%"
+    - ""
+    - "<green>click to purchase!"
