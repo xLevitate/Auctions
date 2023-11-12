@@ -1,2 +1,4 @@
-package me.levitate.auctions.storage;public class ItemData {
+package me.levitate.auctions.storage;
+
+public class ItemData {
 }

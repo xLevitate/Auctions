@@ -1,0 +1,7 @@
+messages:
+  already-purchased: "<red>That item has already been purchased."
+  price-low: "<red>The price cannot be below or equal to 0."
+  no-balance: "<red>You do not have enough money to purchase this item."
+  inventory-full: "<red>Your inventory is full."
+  no-item: "<red>You are not holding an item."
+  item-listed: "<green>Your item has been listed!"
