@@ -43,12 +43,6 @@ public class Configuration {
     public String nextName = "";
     public List<String> nextLore;
 
-    // Back
-    public ItemStack backItemStack;
-    public Material backItem;
-    public String backName = "";
-    public List<String> backLore;
-
     // Auction Item
     public List<String> itemLore;
 
@@ -80,7 +74,7 @@ public class Configuration {
     }
 
     public void loadSettings() {
-        /*ConfigurationSection mainMenu = fileConfiguration.getConfigurationSection("main-menu");
+        ConfigurationSection mainMenu = fileConfiguration.getConfigurationSection("main-menu");
         if (mainMenu == null) {
             Bukkit.getLogger().severe("Couldn't find main-menu section in the config.");
             return;
@@ -95,11 +89,6 @@ public class Configuration {
         nextName = mainMenu.getString("next-name");
         nextLore = mainMenu.getStringList("next-lore");
         nextItemStack = createMenuItem(nextItem, nextName, nextLore);
-
-        backItem = Material.matchMaterial(mainMenu.getString("back-material"));
-        backName = mainMenu.getString("back-name");
-        backLore = mainMenu.getStringList("back-lore");
-        backItemStack = createMenuItem(backItem, backName, backLore);*/
 
         itemLore = fileConfiguration.getStringList("auctionitem.lore");
     }

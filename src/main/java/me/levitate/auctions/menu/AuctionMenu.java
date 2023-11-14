@@ -55,6 +55,22 @@ public class AuctionMenu extends PaginatedGui {
     }
 
     private void addButtons() {
-        // TODO: Add the buttons
+        // Previous page button
+        if (getPrevPageNum() != getCurrentPageNum())
+            setItem(6, 4, ItemBuilder.from(config.previousItemStack).asGuiItem(e -> {
+                previous();
+                addButtons();
+                update();
+            }));
+        else setItem(6, 4, filler);
+
+        // Next page button
+        if (getNextPageNum() != getCurrentPageNum())
+            setItem(6, 6, ItemBuilder.from(config.nextItemStack).asGuiItem(e -> {
+                next();
+                addButtons();
+                update();
+            }));
+        else setItem(6, 6, filler);
     }
 }

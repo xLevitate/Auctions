@@ -25,14 +25,6 @@ menu-buttons:
     - "<gray>ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴏ ᴛᴏ ᴛʜᴇ"
     - "<gray>ɴᴇxᴛ ᴘᴀɢᴇ."
 
-  back-item: REDSTONE
-  back-name: "<red>ʙᴀᴄᴋ"
-  back-lore:
-    - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ"
-    - ""
-    - "<gray>ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴏ ᴛᴏ ᴛʜᴇ"
-    - "<gray>ᴍᴀɪɴ ᴍᴇɴᴜ."
-
 auctionitem:
   lore:
     - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ ɪᴛᴇᴍ"
