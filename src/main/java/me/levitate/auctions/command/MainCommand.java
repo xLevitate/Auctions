@@ -42,10 +42,17 @@ public class MainCommand extends BaseCommand {
             return;
         }
 
-        final AuctionItem auctionItem = new AuctionItem(item, config.modifyItem(item, player.getName(), price), player, price);
+        final AuctionItem auctionItem = new AuctionItem(item, player, price);
         player.getInventory().removeItem(item);
 
         auctionManager.addItem(auctionItem);
         config.sendMessage(player, "item-listed");
+    }
+
+    @Subcommand("reload")
+    @CommandPermission("auctions.reload")
+    public void onReload(CommandSender sender) {
+        config.reloadConfig();
+        config.sendMessage((Player) sender, "reload");
     }
 }

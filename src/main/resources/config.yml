@@ -6,12 +6,38 @@ messages:
   no-item: "<red>You are not holding an item."
   item-listed: "<green>Your item has been listed!"
   item-purchased: "<green>You have purchased an item!"
+  reload: "<green>The plugin has been reloaded."
+
+menu-buttons:
+  previous-item: SPECTRAL_ARROW
+  previous-name: "<yellow>ᴘʀᴇᴠɪᴏᴜꜱ ᴘᴀɢᴇ"
+  previous-lore:
+    - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ"
+    - ""
+    - "<gray>ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴏ ᴛᴏ ᴛʜᴇ"
+    - "<gray>ᴘʀᴇᴠɪᴏᴜꜱ ᴘᴀɢᴇ."
+
+  next-item: SPECTRAL_ARROW
+  next-name: "<yellow>ɴᴇxᴛ ᴘᴀɢᴇ"
+  next-lore:
+    - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ"
+    - ""
+    - "<gray>ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴏ ᴛᴏ ᴛʜᴇ"
+    - "<gray>ɴᴇxᴛ ᴘᴀɢᴇ."
+
+  back-item: REDSTONE
+  back-name: "<red>ʙᴀᴄᴋ"
+  back-lore:
+    - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ"
+    - ""
+    - "<gray>ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴏ ᴛᴏ ᴛʜᴇ"
+    - "<gray>ᴍᴀɪɴ ᴍᴇɴᴜ."
 
 auctionitem:
   lore:
-    - "<dark_gray>auction item"
+    - "<dark_gray>ᴀᴜᴄᴛɪᴏɴ ɪᴛᴇᴍ"
     - ""
-    - "<gray>price: %price%"
-    - "<gray>seller: %seller%"
+    - "<gray>ᴘʀɪᴄᴇ: <white>%price%"
+    - "<gray>ꜱᴇʟʟᴇʀ: <white>%seller%"
     - ""
-    - "<green>click to purchase!"
+    - "<green>ᴄʟɪᴄᴋ ᴛᴏ ᴘᴜʀᴄʜᴀꜱᴇ!"

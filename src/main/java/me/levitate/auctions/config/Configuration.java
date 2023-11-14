@@ -1,6 +1,7 @@
 package me.levitate.auctions.config;
 
 import lombok.Getter;
+import me.levitate.auctions.auction.AuctionItem;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -136,21 +137,22 @@ public class Configuration {
         return item;
     }
 
-    public ItemStack modifyItem(ItemStack originalItem, String playerName, int price) {
-        ItemMeta itemMeta = originalItem.getItemMeta();
+    public ItemStack modifyItem(AuctionItem item) {
+        ItemStack newItem = new ItemStack(item.getItem());
+        ItemMeta itemMeta = newItem.getItemMeta();
 
         List<Component> lore = itemMeta.hasLore() ? new ArrayList<>(itemMeta.lore()) : new ArrayList<>();
         lore.addAll(itemLore.stream()
                 .map(line -> {
-                    line = line.replace("%seller%", playerName);
-                    line = line.replace("%price%", String.valueOf(price));
+                    line = line.replace("%seller%", item.getSeller().getName());
+                    line = line.replace("%price%", String.valueOf(item.getPrice()));
                     return MiniMessage.miniMessage().deserialize(line).decoration(TextDecoration.ITALIC, false);
                 })
                 .toList());
 
         itemMeta.lore(lore);
-        originalItem.setItemMeta(itemMeta);
+        newItem.setItemMeta(itemMeta);
 
-        return originalItem;
+        return newItem;
     }
 }
